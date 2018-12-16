@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Maps</title>
+	<script src='https://js.arcgis.com/4.4'></script>
+	<link rel="stylesheet" type="text/css" href="https://js.arcgis.com/4.4/esri/css/main.css">
+</head>
+<body>
+	<button id='satellite'> Satellite Map </button>
+	<button id='streets'> Street Map </button>
+	<button id='topo'> Topo Map </button>
+	<button id='ng'> National-geographic </button>
+	<button id='oceans'> Oceans </button>
+    <div id = 'mapview' style='width: 500px;height: 500px'>map goes here</div>
+	<script>
+		let map1;
+		let map2;
+		let map3;
+		let map4;
+		let map5;
+		let mapview;
+		require (["esri/Map","esri/views/MapView","esri/views/SceneView","esri/request"],
+			function(Map,MapView,SceneView,request)
+			{
+				 map1 = new Map({basemap:"topo"});
+				 map2 = new Map({basemap:"satellite"});
+				 map3 = new Map({basemap:"streets"});
+				 map4 = new Map({basemap:"national-geographic"});
+				 map5 = new Map({basemap:"oceans"});
+				 //mapview = new MapView({container : "mapview" , map : map1 , zoom : 5});
+				 sceneview = new SceneView({container : "mapview" , map : map1 , zoom : 5})
+
+			});
+		document.getElementById("satellite").addEventListener("click",
+			function()
+			{
+				sceneview.map=map2;
+			})
+		document.getElementById("streets").addEventListener("click",
+			function()
+			{
+				sceneview.map=map3;
+			})
+		document.getElementById("topo").addEventListener("click",
+			function()
+			{
+				sceneview.map=map1;
+			})
+		document.getElementById("ng").addEventListener("click",
+			function()
+			{
+				sceneview.map=map4;
+			})
+		document.getElementById("oceans").addEventListener("click",
+			function()
+			{
+				sceneview.map=map5;
+			})
+
+	</script>
+
+</body>
+</html>
